@@ -1,0 +1,305 @@
+/*
+    -----------------------------------------------------
+    0. DYNAMIC GALAXY BACKGROUND & 3D CANVAS
+    -----------------------------------------------------
+*/
+#galaxy-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    overflow: hidden;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    --mouse-x: 0px;
+    --mouse-y: 0px;
+}
+
+.stars {
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background-repeat: repeat;
+    background-position: 0 0;
+    transition: transform 0.5s ease-out;
+}
+
+#stars1 {
+    background-image: radial-gradient(1px 1px at 75px 125px, white, rgba(255,255,255,0)),
+                      radial-gradient(1px 1px at 150px 50px, white, rgba(255,255,255,0));
+    background-size: 200px 200px;
+    transform: translate(calc(var(--mouse-x) / 45), calc(var(--mouse-y) / 45));
+}
+
+#stars2 {
+    background-image: radial-gradient(1.5px 1.5px at 25px 35px, white, rgba(255,255,255,0)),
+                      radial-gradient(1px 1px at 90px 80px, white, rgba(255,255,255,0));
+    background-size: 150px 150px;
+    transform: translate(calc(var(--mouse-x) / 30), calc(var(--mouse-y) / 30));
+}
+
+#stars3 {
+    background-image: radial-gradient(2px 2px at 50px 50px, white, rgba(255,255,255,0)),
+                      radial-gradient(2.5px 2.5px at 100px 150px, white, rgba(255,255,255,0));
+    background-size: 200px 200px;
+    transform: translate(calc(var(--mouse-x) / 15), calc(var(--mouse-y) / 15));
+}
+
+#three-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -5;
+}
+
+/*
+    -----------------------------------------------------
+    1. VARIABLES & GLOBAL STYLES
+    -----------------------------------------------------
+*/
+:root {
+    --card-color: rgba(255, 255, 255, 0.05);
+    --text-color: #e0e0e0;
+    --primary-color: #3b82f6; /* Electric Blue Accent */
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: transparent;
+    color: var(--text-color);
+    scroll-behavior: smooth;
+}
+/*
+    -----------------------------------------------------
+    2. LAYOUT & STRUCTURE
+    -----------------------------------------------------
+*/
+main {
+    position: relative;
+    z-index: 10;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding: 1rem 5%;
+    background-color: rgba(12, 12, 20, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+section {
+    padding: 120px 5%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: rgba(12, 12, 20, 0.7);
+}
+
+#hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: transparent;
+}
+
+h1 { font-size: 4rem; margin-bottom: 1rem; }
+h2 { font-size: 3rem; margin-bottom: 3rem; text-align: center; }
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    perspective: 1000px;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 5%;
+    border-top: 1px solid #2a2a2a;
+    color: #888;
+    background-color: rgba(12, 12, 20, 0.7);
+    position: relative;
+    z-index: 10;
+}
+
+/*
+    -----------------------------------------------------
+    3. COMPONENTS & ANIMATION STYLES
+    -----------------------------------------------------
+*/
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.profile-pic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+}
+
+.project-card {
+    background-color: var(--card-color);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+}
+.project-card:hover {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4);
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.project-card a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    text-align: center;
+}
+
+.skill-item {
+    background-color: var(--card-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 500;
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #2563eb;
+}
+
+.stagger-reveal span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.stagger-reveal.visible span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    left: var(--mouse-x, 0);
+    top: var(--mouse-y, 0);
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 70%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/*
+    -----------------------------------------------------
+    4. RESPONSIVENESS & MEDIA QUERIES
+    -----------------------------------------------------
+*/
+@media (max-width: 768px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.5rem; }
+
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-pic {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 2rem;
+    }
+    
+    nav ul {
+        display: none;
+    }
+}
