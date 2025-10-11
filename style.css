@@ -1,3 +1,1127 @@
+/* Loading Page Styles */
+.loading-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(167, 139, 250, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(244, 114, 182, 0.05) 0%, transparent 50%),
+        linear-gradient(135deg, #0c0c14 0%, #1a1a2e 50%, #16213e 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.8s ease-out, visibility 0.8s ease-out;
+    animation: backgroundShift 10s ease-in-out infinite;
+}
+
+.loading-page.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loading-container {
+    text-align: center;
+    color: white;
+}
+
+.loading-logo h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 0 0 1rem 0;
+    background: linear-gradient(45deg, #60a5fa, #a78bfa, #f472b6, #60a5fa);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite, textGlow 2s ease-in-out infinite alternate;
+    letter-spacing: 0.1em;
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(96, 165, 250, 0.6),
+        0 0 30px rgba(167, 139, 250, 0.4);
+}
+
+.loading-logo p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #cbd5e1;
+    margin: 0 0 2rem 0;
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(203, 213, 225, 0.5);
+    animation: textPulse 2s ease-in-out infinite;
+}
+
+/* RAM Eating Cartoon */
+.ram-cartoon {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Enhanced Thief Accessories */
+.thief-mask {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65px;
+    height: 45px;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #1a1a1a);
+    border-radius: 25px 25px 15px 15px;
+    z-index: 15;
+    animation: maskShift 4s ease-in-out infinite;
+    box-shadow: 
+        0 3px 10px rgba(0, 0, 0, 0.5),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+    border: 2px solid #333;
+}
+
+.thief-mask::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #444, transparent);
+    border-radius: 2px;
+}
+
+.thief-mask::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #555, transparent);
+    border-radius: 1px;
+}
+
+.mask-eyes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 10px;
+}
+
+.mask-eye {
+    width: 16px;
+    height: 16px;
+    background: transparent;
+    border-radius: 50%;
+    animation: maskEyeBlink 3s ease-in-out infinite;
+    box-shadow: 
+        0 0 12px rgba(0, 0, 0, 0.9),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    border: 3px solid #000;
+}
+
+.thief-hat {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75px;
+    height: 30px;
+    background: linear-gradient(135deg, #0a0a0a, #1a1a1a, #0a0a0a);
+    border-radius: 37px 37px 0 0;
+    z-index: 20;
+    animation: hatTilt 5s ease-in-out infinite;
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.05);
+    border: 1px solid #222;
+}
+
+.thief-hat::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #ff4444, #cc0000);
+    border-radius: 50%;
+    animation: hatBead 2s ease-in-out infinite;
+    box-shadow: 0 0 6px rgba(255, 68, 68, 0.6);
+}
+
+.thief-hat::after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #333, transparent);
+    border-radius: 1px;
+}
+
+.thief-bag {
+    position: absolute;
+    bottom: -25px;
+    right: -15px;
+    width: 30px;
+    height: 35px;
+    background: linear-gradient(135deg, #654321, #8b4513, #654321);
+    border-radius: 8px;
+    z-index: 5;
+    animation: bagSway 3s ease-in-out infinite;
+    box-shadow: 
+        0 3px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.1);
+    border: 1px solid #4a2c17;
+}
+
+.thief-bag::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 25px;
+    height: 10px;
+    background: linear-gradient(135deg, #4a2c17, #654321);
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.thief-bag::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 3px;
+    background: linear-gradient(90deg, #ff6b6b, #ff4444, #ff6b6b);
+    border-radius: 2px;
+    animation: bagGlow 2s ease-in-out infinite;
+    box-shadow: 0 0 8px rgba(255, 107, 107, 0.8);
+}
+
+.thief-cape {
+    position: absolute;
+    top: 30%;
+    left: -20px;
+    width: 40px;
+    height: 60px;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d, #1a1a1a);
+    border-radius: 0 20px 20px 0;
+    z-index: 1;
+    animation: capeFlow 4s ease-in-out infinite;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+}
+
+.thief-cape::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    width: 30px;
+    height: 2px;
+    background: linear-gradient(90deg, #444, transparent);
+    border-radius: 1px;
+}
+
+.thief-cape::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 8px;
+    width: 25px;
+    height: 2px;
+    background: linear-gradient(90deg, #555, transparent);
+    border-radius: 1px;
+}
+
+.thief-gloves {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 20px;
+    z-index: 12;
+}
+
+.glove {
+    position: absolute;
+    width: 20px;
+    height: 12px;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    border-radius: 10px 10px 5px 5px;
+    animation: gloveFlex 3s ease-in-out infinite;
+    box-shadow: 
+        0 2px 6px rgba(0, 0, 0, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.05);
+    border: 1px solid #333;
+}
+
+.left-glove {
+    left: -35px;
+    animation-delay: 0.2s;
+}
+
+.right-glove {
+    right: -35px;
+    animation-delay: 0.4s;
+}
+
+.glove::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #444, transparent);
+    border-radius: 1px;
+}
+
+/* RAM Monster */
+.ram-monster {
+    position: relative;
+    z-index: 10;
+}
+
+/* Add guilty blush effect */
+.monster-body::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    width: 12px;
+    height: 8px;
+    background: rgba(255, 182, 193, 0.6);
+    border-radius: 50%;
+    animation: guiltyBlush 2s ease-in-out infinite;
+}
+
+.monster-body::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 20%;
+    width: 12px;
+    height: 8px;
+    background: rgba(255, 182, 193, 0.6);
+    border-radius: 50%;
+    animation: guiltyBlush 2s ease-in-out infinite;
+    animation-delay: 0.5s;
+}
+
+/* Add sweat drops for nervousness */
+.monster-face::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 3px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: sweatDrop 1.5s ease-in-out infinite;
+}
+
+.monster-face::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 3px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: sweatDrop 1.5s ease-in-out infinite;
+    animation-delay: 0.3s;
+}
+
+/* Add more obvious guilty elements */
+.monster-body::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 20%;
+    width: 16px;
+    height: 12px;
+    background: rgba(255, 100, 100, 0.8);
+    border-radius: 50%;
+    animation: guiltyBlush 1.5s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(255, 100, 100, 0.5);
+}
+
+.monster-body::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 20%;
+    width: 16px;
+    height: 12px;
+    background: rgba(255, 100, 100, 0.8);
+    border-radius: 50%;
+    animation: guiltyBlush 1.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+    box-shadow: 0 0 10px rgba(255, 100, 100, 0.5);
+}
+
+/* Add more sweat drops */
+.monster-face::before {
+    content: '';
+    position: absolute;
+    top: 8%;
+    left: 12%;
+    width: 4px;
+    height: 8px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    animation: sweatDrop 1.2s ease-in-out infinite;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+.monster-face::after {
+    content: '';
+    position: absolute;
+    top: 8%;
+    right: 12%;
+    width: 4px;
+    height: 8px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    animation: sweatDrop 1.2s ease-in-out infinite;
+    animation-delay: 0.3s;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+}
+
+/* Add nervous twitch effect */
+.monster-body {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    border-radius: 50%;
+    position: relative;
+    animation: monsterSneak 5s ease-in-out infinite, nervousTwitch 1s ease-in-out infinite;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+    transform-origin: center bottom;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    --guilt-level: 0.3;
+}
+
+.monster-face {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+.monster-eyes {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.eye {
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    z-index: 16;
+}
+
+.eye::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    background: black;
+    border-radius: 50%;
+    z-index: 17;
+    transform: translate(var(--pupil-x, 0px), var(--pupil-y, 0px));
+    transition: transform 0.2s ease-out;
+}
+
+.monster-mouth {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 20px;
+    z-index: 16;
+}
+
+.mouth-open {
+    width: 100%;
+    height: 20px;
+    background: #333;
+    border-radius: 0 0 15px 15px;
+    animation: guiltyMouth 2s ease-in-out infinite;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    z-index: 17;
+}
+
+.teeth {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    animation: sneakyTeeth 2s ease-in-out infinite;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    z-index: 18;
+}
+
+.monster-arms {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 20px;
+}
+
+.arm {
+    position: absolute;
+    width: 25px;
+    height: 8px;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    border-radius: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: sneakyArms 3s ease-in-out infinite;
+}
+
+.left-arm {
+    left: -30px;
+    animation-delay: 0.2s;
+}
+
+.right-arm {
+    right: -30px;
+    animation-delay: 0.4s;
+}
+
+/* RAM Chips */
+.ram-chips {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ram-chip {
+    position: absolute;
+    width: 40px;
+    height: 25px;
+    animation: ramFloat 3s ease-in-out infinite;
+}
+
+.chip-body {
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+    border-radius: 3px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+}
+
+.chip-pins {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 5px;
+    background: #2c3e50;
+    border-radius: 0 0 2px 2px;
+}
+
+.chip-1 {
+    top: 20px;
+    left: 20px;
+    animation-delay: 0s;
+}
+
+.chip-2 {
+    top: 40px;
+    right: 20px;
+    animation-delay: 0.5s;
+}
+
+.chip-3 {
+    bottom: 40px;
+    left: 30px;
+    animation-delay: 1s;
+}
+
+.chip-4 {
+    bottom: 20px;
+    right: 30px;
+    animation-delay: 1.5s;
+}
+
+/* RAM Text */
+.ram-text {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    font-family: 'JetBrains Mono', monospace;
+    text-align: center;
+    animation: fadeInOut 1.5s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(226, 232, 240, 0.5);
+}
+
+.ram-consumed {
+    color: #60a5fa;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(96, 165, 250, 0.6);
+}
+
+.ram-amount {
+    color: #ff6b6b;
+    font-weight: 700;
+    animation: ramCounter 0.5s ease-in-out;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.6);
+}
+
+.ram-status {
+    color: #a78bfa;
+    font-style: italic;
+    text-shadow: 0 0 10px rgba(167, 139, 250, 0.6);
+}
+
+.loading-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.loading-progress {
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s ease-out;
+}
+
+.loading-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #94a3b8;
+    animation: fadeInOut 1.5s ease-in-out infinite;
+    text-shadow: 0 0 10px rgba(148, 163, 184, 0.5);
+    letter-spacing: 0.05em;
+}
+
+.main-content.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.main-content {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.8s ease-in, visibility 0.8s ease-in;
+}
+
+/* RAM Cartoon Animations - SLOWER & REALISTIC EATING */
+@keyframes monsterSneak {
+    0%, 100% { 
+        transform: translateY(0px) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    25% { 
+        transform: translateY(calc(-8px * var(--guilt-level, 0.3))) scale(calc(0.8 + 0.2 * var(--guilt-level, 0.3))) rotate(calc(-3deg * var(--guilt-level, 0.3)));
+        opacity: calc(0.7 + 0.3 * var(--guilt-level, 0.3));
+    }
+    50% { 
+        transform: translateY(calc(-12px * var(--guilt-level, 0.3))) scale(calc(0.75 + 0.25 * var(--guilt-level, 0.3))) rotate(calc(-5deg * var(--guilt-level, 0.3)));
+        opacity: calc(0.6 + 0.4 * var(--guilt-level, 0.3));
+    }
+    75% { 
+        transform: translateY(calc(-8px * var(--guilt-level, 0.3))) scale(calc(0.8 + 0.2 * var(--guilt-level, 0.3))) rotate(calc(-3deg * var(--guilt-level, 0.3)));
+        opacity: calc(0.7 + 0.3 * var(--guilt-level, 0.3));
+    }
+}
+
+@keyframes guiltyEyes {
+    0%, 100% { 
+        transform: scaleY(1) scaleX(1);
+        opacity: 1;
+    }
+    20% { 
+        transform: scaleY(calc(0.05 + 0.25 * var(--guilt-level, 0.3))) scaleX(calc(0.3 + 0.4 * var(--guilt-level, 0.3)));
+        opacity: calc(0.2 + 0.4 * var(--guilt-level, 0.3));
+    }
+    40% { 
+        transform: scaleY(calc(0.02 + 0.18 * var(--guilt-level, 0.3))) scaleX(calc(0.1 + 0.3 * var(--guilt-level, 0.3)));
+        opacity: calc(0.1 + 0.3 * var(--guilt-level, 0.3));
+    }
+    60% { 
+        transform: scaleY(calc(0.1 + 0.2 * var(--guilt-level, 0.3))) scaleX(calc(0.4 + 0.3 * var(--guilt-level, 0.3)));
+        opacity: calc(0.3 + 0.4 * var(--guilt-level, 0.3));
+    }
+    80% { 
+        transform: scaleY(calc(0.3 + 0.3 * var(--guilt-level, 0.3))) scaleX(calc(0.6 + 0.3 * var(--guilt-level, 0.3)));
+        opacity: calc(0.5 + 0.3 * var(--guilt-level, 0.3));
+    }
+}
+
+@keyframes shiftyEyes {
+    0%, 100% { 
+        transform: translateX(0px);
+    }
+    15% { 
+        transform: translateX(6px);
+    }
+    30% { 
+        transform: translateX(-5px);
+    }
+    45% { 
+        transform: translateX(4px);
+    }
+    60% { 
+        transform: translateX(-3px);
+    }
+    75% { 
+        transform: translateX(2px);
+    }
+    90% { 
+        transform: translateX(-1px);
+    }
+}
+
+@keyframes guiltyMouth {
+    0%, 100% { 
+        transform: scaleY(1) scaleX(1);
+        opacity: 1;
+    }
+    15% { 
+        transform: scaleY(0.3) scaleX(0.4);
+        opacity: 0.5;
+    }
+    30% { 
+        transform: scaleY(0.1) scaleX(0.2);
+        opacity: 0.2;
+    }
+    45% { 
+        transform: scaleY(0.4) scaleX(0.5);
+        opacity: 0.4;
+    }
+    60% { 
+        transform: scaleY(0.2) scaleX(0.3);
+        opacity: 0.3;
+    }
+    75% { 
+        transform: scaleY(0.5) scaleX(0.6);
+        opacity: 0.5;
+    }
+    90% { 
+        transform: scaleY(0.3) scaleX(0.4);
+        opacity: 0.4;
+    }
+}
+
+@keyframes sneakyTeeth {
+    0%, 100% { 
+        transform: translateX(-50%) scaleY(1) scaleX(1);
+        opacity: 1;
+    }
+    20% { 
+        transform: translateX(-50%) scaleY(0.1) scaleX(0.3);
+        opacity: 0.3;
+    }
+    40% { 
+        transform: translateX(-50%) scaleY(0.05) scaleX(0.1);
+        opacity: 0.1;
+    }
+    60% { 
+        transform: translateX(-50%) scaleY(0.2) scaleX(0.4);
+        opacity: 0.2;
+    }
+    80% { 
+        transform: translateX(-50%) scaleY(0.1) scaleX(0.3);
+        opacity: 0.2;
+    }
+}
+
+@keyframes sneakyArms {
+    0%, 100% { 
+        transform: translateY(-50%) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    20% { 
+        transform: translateY(-50%) rotate(-30deg) scale(0.7);
+        opacity: 0.5;
+    }
+    40% { 
+        transform: translateY(-50%) rotate(-45deg) scale(0.5);
+        opacity: 0.3;
+    }
+    60% { 
+        transform: translateY(-50%) rotate(-35deg) scale(0.6);
+        opacity: 0.4;
+    }
+    80% { 
+        transform: translateY(-50%) rotate(-25deg) scale(0.8);
+        opacity: 0.6;
+    }
+}
+
+@keyframes guiltyBlush {
+    0%, 100% { 
+        opacity: 0.8;
+        transform: scale(1.5);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(2);
+    }
+}
+
+@keyframes sweatDrop {
+    0%, 100% { 
+        opacity: 0;
+        transform: translateY(0px);
+    }
+    50% { 
+        opacity: 1;
+        transform: translateY(8px);
+    }
+}
+
+@keyframes nervousTwitch {
+    0%, 100% { 
+        transform: translateX(0px) rotate(0deg);
+    }
+    25% { 
+        transform: translateX(-2px) rotate(-1deg);
+    }
+    50% { 
+        transform: translateX(2px) rotate(1deg);
+    }
+    75% { 
+        transform: translateX(-1px) rotate(-0.5deg);
+    }
+}
+
+/* Thief Animations */
+@keyframes maskShift {
+    0%, 100% { 
+        transform: translateX(-50%) rotate(0deg);
+    }
+    25% { 
+        transform: translateX(-48%) rotate(-1deg);
+    }
+    50% { 
+        transform: translateX(-52%) rotate(1deg);
+    }
+    75% { 
+        transform: translateX(-49%) rotate(-0.5deg);
+    }
+}
+
+@keyframes maskEyeBlink {
+    0%, 90%, 100% { 
+        transform: scaleY(1);
+        opacity: 1;
+    }
+    95% { 
+        transform: scaleY(0.1);
+        opacity: 0.3;
+    }
+}
+
+@keyframes hatTilt {
+    0%, 100% { 
+        transform: translateX(-50%) rotate(0deg);
+    }
+    25% { 
+        transform: translateX(-48%) rotate(-2deg);
+    }
+    50% { 
+        transform: translateX(-52%) rotate(2deg);
+    }
+    75% { 
+        transform: translateX(-49%) rotate(-1deg);
+    }
+}
+
+@keyframes hatBead {
+    0%, 100% { 
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 0.7;
+        transform: scale(0.8);
+    }
+}
+
+@keyframes bagSway {
+    0%, 100% { 
+        transform: rotate(0deg);
+    }
+    25% { 
+        transform: rotate(-3deg);
+    }
+    50% { 
+        transform: rotate(0deg);
+    }
+    75% { 
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes bagGlow {
+    0%, 100% { 
+        opacity: 0.5;
+        box-shadow: 0 0 3px rgba(255, 107, 107, 0.3);
+    }
+    50% { 
+        opacity: 1;
+        box-shadow: 0 0 8px rgba(255, 107, 107, 0.8);
+    }
+}
+
+@keyframes capeFlow {
+    0%, 100% { 
+        transform: translateX(0px) rotate(0deg);
+    }
+    25% { 
+        transform: translateX(-2px) rotate(-1deg);
+    }
+    50% { 
+        transform: translateX(2px) rotate(1deg);
+    }
+    75% { 
+        transform: translateX(-1px) rotate(-0.5deg);
+    }
+}
+
+@keyframes gloveFlex {
+    0%, 100% { 
+        transform: scale(1) rotate(0deg);
+    }
+    25% { 
+        transform: scale(0.95) rotate(-2deg);
+    }
+    50% { 
+        transform: scale(1.05) rotate(2deg);
+    }
+    75% { 
+        transform: scale(0.98) rotate(-1deg);
+    }
+}
+
+@keyframes ramFloat {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    25% { 
+        transform: translateY(-3px) rotate(1deg) scale(0.95);
+        opacity: 0.9;
+    }
+    50% { 
+        transform: translateY(0px) rotate(0deg) scale(0.9);
+        opacity: 0.8;
+    }
+    75% { 
+        transform: translateY(3px) rotate(-1deg) scale(0.95);
+        opacity: 0.9;
+    }
+}
+
+@keyframes ramCounter {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+@keyframes ramEat {
+    0% { 
+        transform: translateX(0px) translateY(0px) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    30% { 
+        transform: translateX(-30px) translateY(-10px) scale(0.8) rotate(-10deg);
+        opacity: 0.8;
+    }
+    60% { 
+        transform: translateX(-60px) translateY(-20px) scale(0.5) rotate(-20deg);
+        opacity: 0.5;
+    }
+    100% { 
+        transform: translateX(-80px) translateY(-30px) scale(0.1) rotate(-30deg);
+        opacity: 0;
+    }
+}
+
+/* Loading Animations */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes progress {
+    0% { width: 0%; }
+    25% { width: 20%; }
+    50% { width: 50%; }
+    75% { width: 80%; }
+    100% { width: 100%; }
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes textGlow {
+    0% { 
+        text-shadow: 
+            0 0 10px rgba(255, 255, 255, 0.8),
+            0 0 20px rgba(96, 165, 250, 0.6),
+            0 0 30px rgba(167, 139, 250, 0.4);
+    }
+    100% { 
+        text-shadow: 
+            0 0 20px rgba(255, 255, 255, 1),
+            0 0 30px rgba(96, 165, 250, 0.8),
+            0 0 40px rgba(167, 139, 250, 0.6);
+    }
+}
+
+@keyframes textPulse {
+    0%, 100% { 
+        opacity: 0.9;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.02);
+    }
+}
+
+@keyframes backgroundShift {
+    0%, 100% { 
+        background-position: 0% 50%, 100% 50%, 50% 50%, 0% 50%;
+    }
+    50% { 
+        background-position: 100% 50%, 0% 50%, 50% 50%, 100% 50%;
+    }
+}
+
+@keyframes borderGlow {
+    0%, 100% { 
+        background-position: 0% 50%;
+        opacity: 0.8;
+    }
+    50% { 
+        background-position: 100% 50%;
+        opacity: 1;
+    }
+}
+
+@keyframes skillCardGlow {
+    0%, 100% { 
+        background-position: 0% 50%;
+        opacity: 0.6;
+    }
+    50% { 
+        background-position: 100% 50%;
+        opacity: 1;
+    }
+}
+
+@keyframes cosmicGlow {
+    0% { 
+        background-position: 0% 50%;
+        opacity: 0.7;
+        filter: hue-rotate(0deg);
+    }
+    25% { 
+        background-position: 50% 0%;
+        opacity: 1;
+        filter: hue-rotate(90deg);
+    }
+    50% { 
+        background-position: 100% 50%;
+        opacity: 0.8;
+        filter: hue-rotate(180deg);
+    }
+    75% { 
+        background-position: 50% 100%;
+        opacity: 1;
+        filter: hue-rotate(270deg);
+    }
+    100% { 
+        background-position: 0% 50%;
+        opacity: 0.7;
+        filter: hue-rotate(360deg);
+    }
+}
+
+
 /*
     -----------------------------------------------------
     0. DYNAMIC GALAXY BACKGROUND & 3D CANVAS
@@ -108,10 +1232,15 @@
 }
 
 body {
-    font-family: var(--font-main);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
     background-color: transparent;
-    color: var(--text-color);
+    color: #e2e8f0;
     scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Scroll progress bar */
@@ -230,14 +1359,38 @@ section {
     max-width: 1000px;
     margin: 0 auto;
     background-color: var(--bg-panel);
-    border: 1px solid var(--border);
+    border: 2px solid transparent;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    position: relative;
 }
 
-#resume {
-    margin-top: 80px;
-    margin-bottom: 80px;
+/* Glowing Border Effect */
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: var(--radius);
+    padding: 2px;
+    background: linear-gradient(45deg, 
+        #60a5fa, #a78bfa, #f472b6, #60a5fa);
+    background-size: 400% 400%;
+    animation: borderGlow 3s ease-in-out infinite;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    z-index: -1;
+}
+
+/* Skills section specific styling */
+#skills {
+    max-width: 1400px;
+    padding: 120px 6%;
+    min-height: 1000px;
 }
 
 #projects { margin-top: 0; }
@@ -285,6 +1438,11 @@ section {
     will-change: transform, opacity;
     opacity: 0;
     transition: opacity 0.3s ease;
+    /* Override any inherited enhanced styles */
+    font-family: inherit !important;
+    animation: none !important;
+    text-align: left !important;
+    margin-bottom: 0 !important;
 }
 
 
@@ -355,18 +1513,56 @@ section {
     align-items: center;
     text-align: center;
     background-color: transparent;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Remove border from hero section */
+#hero::before,
+#hero::after {
+    display: none !important;
+}
+
+/* Remove border from projects section */
+#projects::before,
+#projects::after {
+    display: none !important;
+}
+
+/* Remove border from skills section */
+#skills::before,
+#skills::after {
+    display: none !important;
 }
 .hero-inner {
     padding: 120px 5% 80px;
 }
 .gradient-text {
-    background: linear-gradient(90deg, #93c5fd, #3b82f6 50%, #a78bfa);
+    font-family: 'Orbitron', monospace;
+    font-weight: 900;
+    font-size: 5rem;
+    background: linear-gradient(45deg, #60a5fa, #a78bfa, #f472b6, #60a5fa);
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    animation: gradientShift 4s ease-in-out infinite, textGlow 3s ease-in-out infinite alternate;
+    text-shadow: 
+        0 0 20px rgba(96, 165, 250, 0.5),
+        0 0 40px rgba(167, 139, 250, 0.3);
+    letter-spacing: 0.3em;
+    margin-bottom: 1rem;
+    line-height: 1.1;
 }
 .subtitle {
-    color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px rgba(203, 213, 225, 0.4);
+    animation: textPulse 2.5s ease-in-out infinite;
+    letter-spacing: 0.15em;
+    line-height: 1.3;
 }
 .cta-row {
     display: flex;
@@ -402,16 +1598,54 @@ footer {
 */
 .about-container {
     display: flex;
-    align-items: center;
-    gap: 3rem;
+    align-items: flex-start;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.about-container p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #e2e8f0;
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 10px rgba(226, 232, 240, 0.3);
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.1), 
+        rgba(255, 255, 255, 0.05));
+    padding: 2.5rem;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.3),
+        0 0 25px rgba(96, 165, 250, 0.1);
+    flex: 1;
+    margin: 0;
 }
 
 .profile-pic {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--primary-color);
+    border: 3px solid rgba(96, 165, 250, 0.3);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(96, 165, 250, 0.2);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    border-color: rgba(96, 165, 250, 0.5);
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(96, 165, 250, 0.3);
 }
 
 .project-card {
@@ -444,14 +1678,512 @@ footer {
     display: inline-block;
 }
 
-/* Skills Container - 5 cards with 3D rotation */
-.skills-container {
+/* Skills Animation Container */
+.skills-animation-container {
+    position: relative;
+    min-height: 800px;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 3rem;
-    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    padding: 3rem;
+}
+
+/* Main SKILLS card (initially visible and centered) */
+.skills-main-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.skills-main-card .card {
+    width: 160px;
+    height: 200px;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+}
+
+/* Static Border for Main SKILLS Card */
+.skills-main-card .card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 17px;
+    background: rgba(30, 64, 175, 0.3);
+    z-index: -1;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.skills-main-card .card:hover::before {
+    opacity: 1;
+}
+
+.skills-main-card .card:hover {
+    transform: rotateY(10deg) rotateX(5deg);
+}
+
+.skills-main-card .card.rotated {
+    transform: rotateY(180deg);
+}
+
+.skills-main-card .card .front {
+    background: linear-gradient(135deg, 
+        rgba(30, 64, 175, 0.02), 
+        rgba(15, 23, 42, 0.1),
+        rgba(30, 64, 175, 0.01));
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.15),
+        0 0 5px rgba(30, 64, 175, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.01);
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.skills-main-card .card:hover .front {
+    background: linear-gradient(135deg, 
+        rgba(30, 64, 175, 0.04), 
+        rgba(15, 23, 42, 0.15),
+        rgba(30, 64, 175, 0.02));
+    border-color: rgba(30, 64, 175, 0.2);
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.2),
+        0 0 8px rgba(30, 64, 175, 0.05),
+        0 0 12px rgba(124, 58, 237, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.skills-main-card .card .front h3 {
+    font-size: 1.2rem;
+    color: white;
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.skills-main-card .card .back {
+    background: linear-gradient(135deg, 
+        rgba(30, 64, 175, 0.02), 
+        rgba(15, 23, 42, 0.1),
+        rgba(30, 64, 175, 0.01));
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.15),
+        0 0 5px rgba(30, 64, 175, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.01);
+    width: 100%;
+    height: 100%;
+    transform: rotateY(180deg);
+    transition: all 0.3s ease;
+}
+
+.skills-main-card .card .back .text {
+    text-align: center;
+    padding: 1rem;
+    color: white;
+}
+
+.skills-main-card .card .back .text h4 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.skills-main-card .card .back .text p {
+    font-size: 0.8rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Individual skill cards container */
+.skills-individual-cards {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+/* Individual skill cards - initially stacked behind main card */
+.skill-card-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1;
+}
+
+/* Simplified skill cards with 3D rotation */
+.skills-individual-cards .card {
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 160px;
+    height: 200px;
+    position: relative;
+}
+
+/* Static Border for Skill Cards */
+.skills-individual-cards .card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 17px;
+    background: rgba(30, 64, 175, 0.3);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.skills-individual-cards .card:hover::before {
+    opacity: 1;
+}
+
+.skills-individual-cards .card:hover {
+    transform: rotateY(10deg) rotateX(5deg);
+}
+
+.skills-individual-cards .card.rotated {
+    transform: rotateY(180deg);
+}
+
+.skills-individual-cards .card .front {
+    background: linear-gradient(135deg, 
+        rgba(30, 64, 175, 0.02), 
+        rgba(15, 23, 42, 0.1),
+        rgba(30, 64, 175, 0.01));
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.15),
+        0 0 5px rgba(30, 64, 175, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.01);
+    width: 100%;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.skills-individual-cards .card:hover .front {
+    background: linear-gradient(135deg, 
+        rgba(30, 64, 175, 0.04), 
+        rgba(15, 23, 42, 0.15),
+        rgba(30, 64, 175, 0.02));
+    border-color: rgba(30, 64, 175, 0.2);
+    box-shadow: 
+        0 8px 20px rgba(0, 0, 0, 0.2),
+        0 0 8px rgba(30, 64, 175, 0.05),
+        0 0 12px rgba(124, 58, 237, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.02);
+}
+
+.skills-individual-cards .card .front h3 {
+    font-size: 1.2rem;
+    color: white;
+    margin: 0;
+    text-align: center;
+    font-weight: bold;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.skills-individual-cards .card .back {
+    background: linear-gradient(135deg, 
+        rgba(30, 64, 175, 0.02), 
+        rgba(15, 23, 42, 0.1),
+        rgba(30, 64, 175, 0.01));
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.15),
+        0 0 5px rgba(30, 64, 175, 0.03),
+        inset 0 1px 0 rgba(255, 255, 255, 0.01);
+    width: 100%;
+    height: 100%;
+    transform: rotateY(180deg);
+    transition: all 0.3s ease;
+}
+
+.skills-individual-cards .card .back .text {
+    text-align: center;
+    padding: 0.8rem;
+    color: white;
+}
+
+.skills-individual-cards .card .back .text h4 {
+    font-size: 1rem;
+    margin: 0 0 0.5rem 0;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.skills-individual-cards .card .back .text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.skills-individual-cards .card .back .text ul li {
+    margin: 0.2rem 0;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Progressive Animation Steps - Cards fall below main card */
+
+/* Step 1: Show first two cards (Languages, Frameworks) */
+.skills-animation-container.step-1 .skill-card-1 {
+    opacity: 1;
+    transform: translate(-250%, 80%) scale(1);
+    transition-delay: 0.1s;
+}
+
+.skills-animation-container.step-1 .skill-card-2 {
+    opacity: 1;
+    transform: translate(-125%, 80%) scale(1);
+    transition-delay: 0.2s;
+}
+
+/* Step 2: Show next two cards (Tools, Databases) */
+.skills-animation-container.step-2 .skill-card-1 {
+    opacity: 1;
+    transform: translate(-250%, 80%) scale(1);
+    transition-delay: 0.1s;
+}
+
+.skills-animation-container.step-2 .skill-card-2 {
+    opacity: 1;
+    transform: translate(-125%, 80%) scale(1);
+    transition-delay: 0.2s;
+}
+
+.skills-animation-container.step-2 .skill-card-3 {
+    opacity: 1;
+    transform: translate(0%, 80%) scale(1);
+    transition-delay: 0.3s;
+}
+
+.skills-animation-container.step-2 .skill-card-4 {
+    opacity: 1;
+    transform: translate(125%, 80%) scale(1);
+    transition-delay: 0.4s;
+}
+
+/* Step 3: Show last card (Other) */
+.skills-animation-container.step-3 .skill-card-1 {
+    opacity: 1;
+    transform: translate(-250%, 80%) scale(1);
+    transition-delay: 0.1s;
+}
+
+.skills-animation-container.step-3 .skill-card-2 {
+    opacity: 1;
+    transform: translate(-125%, 80%) scale(1);
+    transition-delay: 0.2s;
+}
+
+.skills-animation-container.step-3 .skill-card-3 {
+    opacity: 1;
+    transform: translate(0%, 80%) scale(1);
+    transition-delay: 0.3s;
+}
+
+.skills-animation-container.step-3 .skill-card-4 {
+    opacity: 1;
+    transform: translate(125%, 80%) scale(1);
+    transition-delay: 0.4s;
+}
+
+.skills-animation-container.step-3 .skill-card-5 {
+    opacity: 1;
+    transform: translate(250%, 80%) scale(1);
+    transition-delay: 0.5s;
+}
+
+/* Step 4: Hide main card completely */
+.skills-animation-container.step-4 .skills-main-card {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+    z-index: 0;
+}
+
+.skills-animation-container.step-4 .skill-card-1 {
+    opacity: 1;
+    transform: translate(-250%, 80%) scale(1);
+    transition-delay: 0.1s;
+}
+
+.skills-animation-container.step-4 .skill-card-2 {
+    opacity: 1;
+    transform: translate(-125%, 80%) scale(1);
+    transition-delay: 0.2s;
+}
+
+.skills-animation-container.step-4 .skill-card-3 {
+    opacity: 1;
+    transform: translate(0%, 80%) scale(1);
+    transition-delay: 0.3s;
+}
+
+.skills-animation-container.step-4 .skill-card-4 {
+    opacity: 1;
+    transform: translate(125%, 80%) scale(1);
+    transition-delay: 0.4s;
+}
+
+.skills-animation-container.step-4 .skill-card-5 {
+    opacity: 1;
+    transform: translate(250%, 80%) scale(1);
+    transition-delay: 0.5s;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .skills-animation-container {
+        max-width: 100%;
+        padding: 1rem;
+        min-height: 300px;
+    }
+    
+    .skills-individual-cards {
+        gap: 1rem;
+    }
+    
+    .skills-individual-cards .card {
+        width: 140px;
+        height: 180px;
+    }
+    
+    .skills-main-card .card {
+        width: 140px;
+        height: 180px;
+    }
+    
+    .skills-individual-cards .card .front h3 {
+        font-size: 1rem;
+    }
+    
+    .skills-main-card .card .front .text .heading {
+        font-size: 1rem;
+    }
+    
+    .skills-main-card .card .front .text p {
+        font-size: 0.8rem;
+    }
+    
+    /* Adjust card positioning for mobile */
+    .skills-animation-container.step-1 .skill-card-1 {
+        transform: translate(-200%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-1 .skill-card-2 {
+        transform: translate(-100%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-2 .skill-card-1 {
+        transform: translate(-200%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-2 .skill-card-2 {
+        transform: translate(-100%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-2 .skill-card-3 {
+        transform: translate(0%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-2 .skill-card-4 {
+        transform: translate(100%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-3 .skill-card-1 {
+        transform: translate(-200%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-3 .skill-card-2 {
+        transform: translate(-100%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-3 .skill-card-3 {
+        transform: translate(0%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-3 .skill-card-4 {
+        transform: translate(100%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-3 .skill-card-5 {
+        transform: translate(200%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-4 .skill-card-1 {
+        transform: translate(-200%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-4 .skill-card-2 {
+        transform: translate(-100%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-4 .skill-card-3 {
+        transform: translate(0%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-4 .skill-card-4 {
+        transform: translate(100%, 60%) scale(0.8);
+    }
+    
+    .skills-animation-container.step-4 .skill-card-5 {
+        transform: translate(200%, 60%) scale(0.8);
+    }
 }
 
 /* Skill card wrapper with title */
@@ -508,6 +2240,24 @@ footer {
     width: 324px;
     height: 204px;
     position: relative;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.card h3 {
+    font-family: 'Orbitron', monospace;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.05em;
+}
+
+.card p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+    color: #cbd5e1;
+    line-height: 1.6;
+    text-shadow: 0 0 5px rgba(203, 213, 225, 0.2);
 }
 
 .card > .front,
@@ -719,21 +2469,24 @@ footer {
 }
 
 .button {
-    /* Existing button styles - removed background and transition */
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
     color: #fff;
     padding: 1rem 2rem;
     text-decoration: none;
     border-radius: 5px;
-    position: relative; /* Essential for positioning the SVG */
-    overflow: hidden; /* Hide the overflowing SVG initially */
-    z-index: 1; /* Ensure text is above SVG */
-    display: inline-flex; /* Use flex to vertically center text if needed */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 150px; /* Give it a consistent width */
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    border: 1px solid var(--primary-color); /* Add a subtle border */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+    min-width: 150px;
+    border: 1px solid var(--primary-color);
     box-shadow: var(--ring);
 }
 
@@ -898,13 +2651,76 @@ footer {
 
 /* Fancy headings */
 h1, h2, h3 { text-shadow: 0 1px 0 rgba(0,0,0,0.2); }
+/* Enhanced Section Headings */
 section h2 {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 3rem;
     position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.1em;
+    z-index: 1000;
 }
 section h2::before {
     content: '';
     position: absolute; left: 50%; transform: translateX(-50%);
     bottom: -14px; width: 120px; height: 1px; background: linear-gradient(90deg, transparent, rgba(96,165,250,0.4), transparent);
+}
+
+/* Enhanced Typography for Portfolio */
+p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+    color: #cbd5e1;
+    line-height: 1.7;
+    text-shadow: 0 0 5px rgba(203, 213, 225, 0.1);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    letter-spacing: 0.05em;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    background: linear-gradient(45deg, #60a5fa, #a78bfa, #f472b6);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradientShift 4s ease-in-out infinite;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Links */
+a {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    color: #60a5fa;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px rgba(96, 165, 250, 0.3);
+}
+
+a:hover {
+    color: #a78bfa;
+    text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
 }
 
 /* Utility */
@@ -932,12 +2748,21 @@ section h2::before {
     .about-container {
         flex-direction: column;
         text-align: center;
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .about-container p {
+        font-size: 1.1rem;
+        padding: 1.5rem;
+        border-radius: 15px;
     }
 
     .profile-pic {
-        width: 200px;
-        height: 200px;
-        margin-bottom: 2rem;
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+        border-radius: 50%;
     }
     
     #nav-toggle { display: inline-flex; }

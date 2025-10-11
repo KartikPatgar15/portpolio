@@ -10,7 +10,7 @@
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Orbitron:wght@400;700;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
@@ -31,8 +31,74 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <!-- Loading Page -->
+    <div id="loading-page" class="loading-page">
+        <div class="loading-container">
+            <div class="loading-logo">
+                <h1>Kartik</h1>
+                <p>Portfolio Loading...</p>
+            </div>
+            
+            <!-- RAM Eating Cartoon -->
+            <div class="ram-cartoon">
+                <div class="ram-monster">
+                    <div class="monster-body">
+                        <div class="monster-face">
+                            <div class="monster-eyes">
+                                <div class="eye left-eye"></div>
+                                <div class="eye right-eye"></div>
+                            </div>
+                            <div class="monster-mouth">
+                                <div class="mouth-open"></div>
+                                <div class="teeth"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="monster-arms">
+                        <div class="arm left-arm"></div>
+                        <div class="arm right-arm"></div>
+                    </div>
+                </div>
+                
+                <!-- RAM Chips -->
+                <div class="ram-chips">
+                    <div class="ram-chip chip-1">
+                        <div class="chip-body"></div>
+                        <div class="chip-pins"></div>
+                    </div>
+                    <div class="ram-chip chip-2">
+                        <div class="chip-body"></div>
+                        <div class="chip-pins"></div>
+                    </div>
+                    <div class="ram-chip chip-3">
+                        <div class="chip-body"></div>
+                        <div class="chip-pins"></div>
+                    </div>
+                    <div class="ram-chip chip-4">
+                        <div class="chip-body"></div>
+                        <div class="chip-pins"></div>
+                    </div>
+                </div>
+                
+                <!-- RAM Consumption Text -->
+                <div class="ram-text">
+                    <span class="ram-consumed">RAM: </span>
+                    <span class="ram-amount">0 MB</span>
+                    <span class="ram-status"> looted</span>
+                </div>
+            </div>
+            
+            <div class="loading-animation">
+                <div class="loading-progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <div class="loading-text">Looting animations...</div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Main Content -->
+    <div id="main-content" class="main-content hidden">
     <!-- Animated Galaxy Background -->
     <div id="galaxy-bg">
         <div id="stars1" class="stars"></div>
@@ -76,18 +142,23 @@
         <section id="about">
             <h2 class="stagger-reveal">About Me</h2>
             <div class="about-container">
-                <img src="https://placehold.co/250x250/0c0c14/e0e0e0?text=KP" alt="Kartik Patgar" class="profile-pic">
-                <p>Undergraduate student in Information Science and Engineering with a strong interest in software development and web technologies. Skilled in programming, databases, and building practical projects using modern frameworks. Eager to learn, adaptable, and motivated to apply technical knowledge to solve real-world problems.</p>
+                <img src="profile.jpeg" alt="Kartik Patgar" class="profile-pic">
+                <p>Passionate Information Science and Engineering student with expertise in full-stack development and modern web technologies. Proficient in multiple programming languages, database design, and cloud computing. Committed to creating innovative solutions and continuously expanding technical skills through hands-on projects and collaborative learning.</p>
             </div>
         </section>
 
         <!-- Resume Section -->
         <section id="resume" class="panel">
             <h2 class="stagger-reveal">Resume / CV</h2>
-            <p style="text-align:center; color:#cbd5e1; max-width:720px; margin:0 auto 1.5rem;">Download a PDF copy of my latest resume. If the link doesn't download, place your PDF as <code>Kartik_Patgar_Resume.pdf</code> in the project root or update the URL.</p>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+                <div style="font-size: 3rem;">📁</div>
+                <div>
+                    <p style="text-align:center; color:#cbd5e1; max-width:720px; margin:0;">Download a PDF copy of my latest resume. If the link doesn't download, place your PDF as <code>Kartik_Patgar_Resume.pdf</code> in the project root or update the URL.</p>
+                </div>
+            </div>
             <div style="display:flex; justify-content:center; gap:1rem;">
-                <a class="button magnetic" href="./Kartik_Patgar_Resume.pdf" download>Download PDF</a>
-                <a class="button" href="./Kartik_Patgar_Resume.pdf" target="_blank" rel="noopener">Open in New Tab</a>
+                <a class="button magnetic" href="./Kartik_Patgar_Resume.pdf" download>📄 Download PDF</a>
+                <a class="button" href="./Kartik_Patgar_Resume.pdf" target="_blank" rel="noopener">📖 Open in New Tab</a>
             </div>
         </section>
 
@@ -248,158 +319,120 @@
 
         <!-- Skills Section -->
         <section id="skills" class="panel">
-            <h2 class="skills-title-animated">SKILLS</h2>
-            <div class="skills-container">
-                <div class="skill-card-wrapper">
-                    <h3 class="skill-title">Languages</h3>
-                    <div class="card" data-href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZIbTuWRSqUVqo_Qdo4O9PKBwhRuwHBcmDdJlDez5oSwdXel-7pw">
+            <div class="skills-animation-container">
+                <!-- Single SKILLS card that reveals others -->
+                <div class="skills-main-card" id="skills-main-card">
+                    <div class="card">
                         <div class="front">
-                            <div class="image">
-                                <p class="heading">Languages</p>
+                            <h3>SKILLS</h3>
+                        </div>
+                        <div class="back">
+                            <div class="text">
+                                <h4>My Technical Skills</h4>
+                                <p>Click to explore individual skill categories</p>
                             </div>
-                        <div class="text">
-                            <header class="clearfix">
-                                <button class="flip">
-                                    <span class="zmdi zmdi-replay"></span>
-                                </button>
-                            </header>
-                            <p>Programming Languages</p>
-                            <a href="#">View Details</a>
                         </div>
-                    </div>
-                    <div class="back">
-                        <div class="text">
-                            <header class="clearfix">
-                                <button class="flip">
-                                    <span class="zmdi zmdi-replay"></span>
-                                </button>
-                            </header>
-                            <b>Languages I work with:</b>
-                            <p>HTML, CSS, JavaScript, Java, C, Python</p>
-                        </div>
-                    </div>
                     </div>
                 </div>
 
-                <div class="skill-card-wrapper">
-                    <h3 class="skill-title">Frameworks</h3>
-                    <div class="card" data-href="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQJW58uxpzvVMvRwWjeU840KqAKGhLNyMT0F5Qh4cgD9rUCihYh">
-                        <div class="front">
-                            <div class="image">
-                                <p class="heading">Frameworks</p>
+                <!-- Individual skill cards (initially hidden behind main card) -->
+                <div class="skills-individual-cards" id="skills-individual-cards">
+                    <div class="skill-card-wrapper skill-card-1">
+                        <div class="card">
+                            <div class="front">
+                                <h3>Languages</h3>
                             </div>
-                        <div class="text">
-                            <header class="clearfix">
-                                <button class="flip">
-                                    <span class="zmdi zmdi-replay"></span>
-                                </button>
-                            </header>
-                            <p>Modern Frameworks</p>
-                            <a href="#">View Details</a>
+                            <div class="back">
+                                <div class="text">
+                                    <h4>Programming Languages</h4>
+                                    <ul>
+                                        <li>HTML</li>
+                                        <li>CSS</li>
+                                        <li>JavaScript</li>
+                                        <li>Java</li>
+                                        <li>C</li>
+                                        <li>Python</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="back">
-                        <div class="text">
-                            <header class="clearfix">
-                                <button class="flip">
-                                    <span class="zmdi zmdi-replay"></span>
-                                </button>
-                            </header>
-                            <b>Frameworks I use:</b>
-                            <p>React, Node.js, Express, GSAP</p>
-                        </div>
-                    </div>
-                    </div>
-                </div>
 
-                <div class="skill-card-wrapper">
-                    <h3 class="skill-title">Tools</h3>
-                    <div class="card" data-href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZIbTuWRSqUVqo_Qdo4O9PKBwhRuwHBcmDdJlDez5oSwdXel-7pw">
-                        <div class="front">
-                            <div class="image">
-                                <p class="heading">Tools</p>
+                    <div class="skill-card-wrapper skill-card-2">
+                        <div class="card">
+                            <div class="front">
+                                <h3>Frameworks</h3>
                             </div>
-                        <div class="text">
-                            <header class="clearfix">
-                                <button class="flip">
-                                    <span class="zmdi zmdi-replay"></span>
-                                </button>
-                            </header>
-                            <p>Development Tools</p>
-                            <a href="#">View Details</a>
+                            <div class="back">
+                                <div class="text">
+                                    <h4>Frameworks & Libraries</h4>
+                                    <ul>
+                                        <li>React</li>
+                                        <li>Node.js</li>
+                                        <li>Express</li>
+                                        <li>GSAP</li>
+                                        <li>jQuery</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="back">
-                        <div class="text">
-                            <header class="clearfix">
-                                <button class="flip">
-                                    <span class="zmdi zmdi-replay"></span>
-                                </button>
-                            </header>
-                            <b>Tools I work with:</b>
-                            <p>Git, GitHub, VS Code, Figma</p>
-                        </div>
-                    </div>
-                    </div>
-                </div>
 
-                <div class="skill-card-wrapper">
-                    <h3 class="skill-title">Databases</h3>
-                    <div class="card" data-href="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQJW58uxpzvVMvRwWjeU840KqAKGhLNyMT0F5Qh4cgD9rUCihYh">
-                        <div class="front">
-                            <div class="image">
-                                <p class="heading">Databases</p>
+                    <div class="skill-card-wrapper skill-card-3">
+                        <div class="card">
+                            <div class="front">
+                                <h3>Tools</h3>
                             </div>
-                        <div class="text">
-                            <header class="clearfix">
-                                <button class="flip">
-                                    <span class="zmdi zmdi-replay"></span>
-                                </button>
-                            </header>
-                            <p>Database Technologies</p>
-                            <a href="#">View Details</a>
+                            <div class="back">
+                                <div class="text">
+                                    <h4>Development Tools</h4>
+                                    <ul>
+                                        <li>Git</li>
+                                        <li>GitHub</li>
+                                        <li>VS Code</li>
+                                        <li>Figma</li>
+                                        <li>Netlify</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="back">
-                        <div class="text">
-                            <header class="clearfix">
-                                <button class="flip">
-                                    <span class="zmdi zmdi-replay"></span>
-                                </button>
-                            </header>
-                            <b>Databases I know:</b>
-                            <p>MongoDB, SQL Basics</p>
-                        </div>
-                    </div>
-                    </div>
-                </div>
 
-                <div class="skill-card-wrapper">
-                    <h3 class="skill-title">Other</h3>
-                    <div class="card" data-href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZIbTuWRSqUVqo_Qdo4O9PKBwhRuwHBcmDdJlDez5oSwdXel-7pw">
-                        <div class="front">
-                            <div class="image">
-                                <p class="heading">Other</p>
+                    <div class="skill-card-wrapper skill-card-4">
+                        <div class="card">
+                            <div class="front">
+                                <h3>Databases</h3>
                             </div>
-                        <div class="text">
-                            <header class="clearfix">
-                                <button class="flip">
-                                    <span class="zmdi zmdi-replay"></span>
-                                </button>
-                            </header>
-                            <p>Additional Skills</p>
-                            <a href="#">View Details</a>
+                            <div class="back">
+                                <div class="text">
+                                    <h4>Database Technologies</h4>
+                                    <ul>
+                                        <li>MongoDB</li>
+                                        <li>SQL Basics</li>
+                                        <li>Database Design</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="back">
-                        <div class="text">
-                            <header class="clearfix">
-                                <button class="flip">
-                                    <span class="zmdi zmdi-replay"></span>
-                                </button>
-                            </header>
-                            <b>Other skills:</b>
-                            <p>Responsive Design, Accessibility, REST APIs</p>
+
+                    <div class="skill-card-wrapper skill-card-5">
+                        <div class="card">
+                            <div class="front">
+                                <h3>Other</h3>
+                            </div>
+                            <div class="back">
+                                <div class="text">
+                                    <h4>Additional Skills</h4>
+                                    <ul>
+                                        <li>Responsive Design</li>
+                                        <li>Accessibility</li>
+                                        <li>REST APIs</li>
+                                        <li>SEO</li>
+                                        <li>Analytics</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -435,6 +468,7 @@
     <footer>
         <p>&copy; 2025 Kartik Patgar. All rights reserved.</p>
     </footer>
+    </div> <!-- End main-content -->
 
     
 </body>

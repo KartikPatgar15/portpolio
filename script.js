@@ -1,3 +1,148 @@
+// Loading Page Management
+document.addEventListener('DOMContentLoaded', function() {
+    const loadingPage = document.getElementById('loading-page');
+    const mainContent = document.getElementById('main-content');
+    const ramAmount = document.querySelector('.ram-amount');
+    const ramChips = document.querySelectorAll('.ram-chip');
+    
+    // Always start from the top when page loads
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    
+    // Show loading page initially
+    if (loadingPage && mainContent) {
+        loadingPage.style.display = 'flex';
+        mainContent.classList.add('hidden');
+        
+        // Reset scroll position to top (HI I am Kartik section)
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        
+        // Animate RAM consumption counter
+        let ramConsumed = 0;
+        const maxRAM = 512; // MB
+        const ramInterval = setInterval(() => {
+            ramConsumed += Math.random() * 15 + 8; // Random increment between 8-23 MB (slower consumption)
+            if (ramConsumed > maxRAM) {
+                ramConsumed = maxRAM;
+                clearInterval(ramInterval);
+            }
+            if (ramAmount) {
+                ramAmount.textContent = Math.floor(ramConsumed) + ' MB';
+                // Add dramatic color changes
+                if (ramConsumed > maxRAM * 0.8) {
+                    ramAmount.style.color = '#ff4444'; // Red when almost full
+                } else if (ramConsumed > maxRAM * 0.5) {
+                    ramAmount.style.color = '#ffaa44'; // Orange when half full
+                } else {
+                    ramAmount.style.color = '#ff6b6b'; // Default red
+                }
+            }
+            
+            // Update monster behavior based on progress
+            updateMonsterBehavior(ramConsumed / maxRAM);
+        }, 300); // Update every 300ms (much slower, more relaxed)
+        
+        // Function to update monster behavior based on loading progress
+        function updateMonsterBehavior(progress) {
+            const monsterBody = document.querySelector('.monster-body');
+            const eyes = document.querySelectorAll('.eye');
+            const progressBar = document.querySelector('.progress-bar');
+            
+            if (monsterBody && eyes.length > 0 && progressBar) {
+                // Calculate eye direction based on the current fill position of the progress bar
+                const progressBarRect = progressBar.getBoundingClientRect();
+                const monsterRect = monsterBody.getBoundingClientRect();
+                
+                // Calculate the position where the progress bar is currently filled
+                const fillPosition = progressBarRect.left + (progressBarRect.width * progress);
+                const fillY = progressBarRect.top + progressBarRect.height / 2;
+                
+                // Calculate angle from monster to the current fill position
+                const deltaX = fillPosition - (monsterRect.left + monsterRect.width / 2);
+                const deltaY = fillY - (monsterRect.top + monsterRect.height / 2);
+                const angle = Math.atan2(deltaY, deltaX);
+                
+                // Update eye positions to look at the current fill position
+                eyes.forEach((eye, index) => {
+                    const maxMove = 4; // Maximum pixels to move pupil
+                    
+                    // Calculate pupil position based on angle to fill position
+                    const pupilX = Math.cos(angle) * maxMove;
+                    const pupilY = Math.sin(angle) * maxMove;
+                    
+                    // Apply transform to pupil
+                    eye.style.setProperty('--pupil-x', `${pupilX}px`);
+                    eye.style.setProperty('--pupil-y', `${pupilY}px`);
+                });
+                
+                // Update monster guilt level based on progress
+                if (progress < 0.3) {
+                    // Early stage - slightly guilty
+                    monsterBody.style.setProperty('--guilt-level', '0.3');
+                } else if (progress < 0.6) {
+                    // Middle stage - more guilty
+                    monsterBody.style.setProperty('--guilt-level', '0.6');
+                } else if (progress < 0.8) {
+                    // Late stage - very guilty
+                    monsterBody.style.setProperty('--guilt-level', '0.8');
+                } else {
+                    // Final stage - extremely guilty
+                    monsterBody.style.setProperty('--guilt-level', '1.0');
+                }
+            }
+        }
+        
+        // Animate RAM chips being "eaten" by monster
+        let chipIndex = 0;
+        const chipInterval = setInterval(() => {
+            if (chipIndex < ramChips.length) {
+                // Make chip move toward monster's mouth
+                ramChips[chipIndex].style.animation = 'ramEat 2.5s ease-in-out forwards';
+                ramChips[chipIndex].style.filter = 'blur(1px)';
+                ramChips[chipIndex].style.zIndex = '20'; // Bring to front when being eaten
+                chipIndex++;
+            } else {
+                clearInterval(chipInterval);
+            }
+        }, 800); // Eat a chip every 800ms (much slower, more relaxed)
+        
+        // Update progress bar based on actual loading progress
+        const progressBar = document.querySelector('.progress-bar');
+        let progressPercent = 0;
+        
+        const progressInterval = setInterval(() => {
+            progressPercent += Math.random() * 3 + 1; // Random increment between 1-4%
+            if (progressPercent > 100) {
+                progressPercent = 100;
+                clearInterval(progressInterval);
+            }
+            if (progressBar) {
+                progressBar.style.width = progressPercent + '%';
+            }
+        }, 100); // Update every 100ms for smooth progress
+        
+        // Simulate loading time for animations to initialize
+        setTimeout(() => {
+            // Initialize everything when DOM is loaded
+            waitForGSAP();
+            
+            // Hide loading page and show main content after GSAP is ready
+            setTimeout(() => {
+                loadingPage.classList.add('hidden');
+                mainContent.classList.remove('hidden');
+                
+                // Ensure we start from the top when main content is shown
+                window.scrollTo(0, 0);
+                document.documentElement.scrollTop = 0;
+                document.body.scrollTop = 0;
+            }, 1000);
+        }, 3000); // 3 second loading time to see the RAM eating animation
+    }
+});
+
 const galaxy = document.getElementById('galaxy-bg');
 window.addEventListener('mousemove', (e) => {
     const x = e.clientX - window.innerWidth / 2;
@@ -615,14 +760,104 @@ function initGSAPAnimations() {
                     }
                 });
             }
+
+            // Progressive Skills card animation
+            const skillsContainer = document.querySelector('.skills-animation-container');
+            if (skillsContainer) {
+                // Step 1: Show first two cards (Languages, Frameworks)
+                ScrollTrigger.create({
+                    trigger: '#skills',
+                    start: 'center 80%',
+                    end: 'center 60%',
+                    onEnter: () => {
+                        skillsContainer.classList.add('step-1');
+                    },
+                    onLeaveBack: () => {
+                        skillsContainer.classList.remove('step-1');
+                    }
+                });
+
+                // Step 2: Show next two cards (Tools, Databases)
+                ScrollTrigger.create({
+                    trigger: '#skills',
+                    start: 'center 60%',
+                    end: 'center 40%',
+                    onEnter: () => {
+                        skillsContainer.classList.add('step-2');
+                    },
+                    onLeaveBack: () => {
+                        skillsContainer.classList.remove('step-2');
+                    }
+                });
+
+                // Step 3: Show last card (Other)
+                ScrollTrigger.create({
+                    trigger: '#skills',
+                    start: 'center 40%',
+                    end: 'center 20%',
+                    onEnter: () => {
+                        skillsContainer.classList.add('step-3');
+                    },
+                    onLeaveBack: () => {
+                        skillsContainer.classList.remove('step-3');
+                    }
+                });
+
+                // Step 4: Hide main card completely
+                ScrollTrigger.create({
+                    trigger: '#skills',
+                    start: 'center 20%',
+                    end: 'center 0%',
+                    onEnter: () => {
+                        skillsContainer.classList.add('step-4');
+                    },
+                    onLeaveBack: () => {
+                        skillsContainer.classList.remove('step-4');
+                    }
+                });
+            }
         }
 
-        // Skills section - Simple 3D card flip animation
-        $(document).on('click','.flip',function(){
-            let card = $(this).closest('.card')
-            if(card.hasClass('flip-it')) card.removeClass('flip-it')
-            else card.addClass('flip-it')
-        })
+        // Skills section - 3D rotation animation on click
+        document.addEventListener('click', function(e) {
+            // Check if clicked element is a skill card or its child
+            const skillCard = e.target.closest('.skills-individual-cards .card');
+            const mainSkillCard = e.target.closest('.skills-main-card .card');
+            
+            if (skillCard) {
+                // Toggle rotation class
+                skillCard.classList.toggle('rotated');
+                
+                // Add a subtle bounce effect
+                skillCard.style.transform = skillCard.classList.contains('rotated') 
+                    ? 'rotateY(180deg) scale(1.05)' 
+                    : 'rotateY(0deg) scale(1.05)';
+                
+                // Reset scale after animation
+                setTimeout(() => {
+                    skillCard.style.transform = skillCard.classList.contains('rotated') 
+                        ? 'rotateY(180deg)' 
+                        : 'rotateY(0deg)';
+                }, 300);
+            }
+            
+            if (mainSkillCard) {
+                // Toggle rotation class for main card
+                mainSkillCard.classList.toggle('rotated');
+                
+                // Add a subtle bounce effect
+                mainSkillCard.style.transform = mainSkillCard.classList.contains('rotated') 
+                    ? 'rotateY(180deg) scale(1.05)' 
+                    : 'rotateY(0deg) scale(1.05)';
+                
+                // Reset scale after animation
+                setTimeout(() => {
+                    mainSkillCard.style.transform = mainSkillCard.classList.contains('rotated') 
+                        ? 'rotateY(180deg)' 
+                        : 'rotateY(0deg)';
+                }, 300);
+            }
+        });
 
         $('.card').each(function(){
             let href = $(this).data('href')
