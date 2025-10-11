@@ -473,38 +473,147 @@ function initGSAPAnimations() {
                     });
                 });
             }
-            // PROJECT title: enter from right when the pinned area begins, then step-left by 1/5vw per card
-            const projTitle = document.querySelector('.projects-title');
+
+            // Animated PROJECTS title: moves from right to left as user scrolls
+            const projTitle = document.querySelector('.projects-title-animated');
             if (projTitle) {
-                const step = window.innerWidth * 0.2; // one-fifth of viewport in px
-
-                // Start title off-screen to the right and invisible
-                gsap.set(projTitle, { x: window.innerWidth * 0.6, opacity: 0 });
-
-                // Bring title into centered position when the pinned area starts (tie to the main timeline at time 0)
-                tl.to(projTitle, { x: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }, 0);
-
-                // For each of the first five slides, move the title left by one step when that slide is centered
-                slides.slice(0, 5).forEach((card, i) => {
-                    const targetX = -step * (i + 1);
-                    ScrollTrigger.create({
-                        trigger: card,
-                        start: 'center center',
-                        end: 'center center',
-                        onEnter: () => gsap.to(projTitle, { x: targetX, duration: 0.45, ease: 'power2.out' }),
-                        onEnterBack: () => gsap.to(projTitle, { x: targetX, duration: 0.45, ease: 'power2.out' })
-                    });
+                // Start title invisible and positioned off-screen
+                gsap.set(projTitle, { 
+                    x: window.innerWidth * 0.6, // Start on right side but invisible
+                    opacity: 0, // Start invisible
+                    scale: 0.8
                 });
 
-                // When the 5th card fully leaves to the left, push the title further left off-screen and fade
-                if (slides[4]) {
-                    ScrollTrigger.create({
-                        trigger: slides[4],
-                        start: 'left center',
-                        onLeave: () => gsap.to(projTitle, { x: -window.innerWidth * 0.8, opacity: 0, duration: 0.6, ease: 'power2.in' }),
-                        onLeaveBack: () => gsap.to(projTitle, { x: -step * 5, opacity: 1, duration: 0.4, ease: 'power2.out' })
-                    });
-                }
+                // Show title later
+                ScrollTrigger.create({
+                    trigger: '#resume',
+                    start: 'bottom 20%',
+                    end: () => `+=${Math.max(1500, totalWidth())}`,
+                    onEnter: () => gsap.to(projTitle, { opacity: 1, duration: 0.5 }),
+                    onLeave: () => gsap.to(projTitle, { opacity: 0, duration: 0.3 }),
+                    onLeaveBack: () => gsap.to(projTitle, { opacity: 0, duration: 0.3 })
+                });
+
+                // Create scroll-triggered animation for the title (starts later and faster)
+                ScrollTrigger.create({
+                    trigger: '#resume',
+                    start: 'bottom 10%',
+                    end: () => `+=${Math.max(1500, totalWidth())}`,
+                    scrub: 1, // Faster animation (was 4)
+                    onUpdate: (self) => {
+                        const progress = self.progress;
+                        
+                        // Move title from right side to left edge
+                        const startX = window.innerWidth * 0.6; // Start on right side (visible)
+                        const leftEdgeX = -window.innerWidth * 0.2; // Left edge position
+                        
+                        let currentX;
+                        if (progress < 0.7) {
+                            // Move from right side to left edge (first 70% of animation)
+                            const moveProgress = progress / 0.7;
+                            currentX = startX + (leftEdgeX - startX) * moveProgress;
+                        } else {
+                            // Stay at left edge (last 30% of animation)
+                            currentX = leftEdgeX;
+                        }
+                        
+                        // Move title upward as user scrolls (more subtle movement)
+                        const startY = 0;
+                        const endY = -window.innerHeight * 0.15;
+                        const currentY = startY + (endY - startY) * progress;
+                        
+                        // Scale and opacity changes
+                        const scale = 0.8 + (0.4 * progress);
+                        
+                        // Fade in during movement
+                        let opacity;
+                        if (progress < 0.3) {
+                            // Fade in during first 30% of animation
+                            opacity = Math.min(1, (progress / 0.3) * 2);
+                        } else {
+                            // Stay fully visible for rest of animation
+                            opacity = 1;
+                        }
+                        
+                        gsap.set(projTitle, {
+                            x: currentX,
+                            y: currentY,
+                            scale: scale,
+                            opacity: opacity
+                        });
+                    }
+                });
+            }
+
+            // Animated SKILLS title: moves from right to left as user scrolls
+            const skillsTitle = document.querySelector('.skills-title-animated');
+            if (skillsTitle) {
+                // Start title invisible and positioned off-screen
+                gsap.set(skillsTitle, { 
+                    x: window.innerWidth * 0.6, // Start on right side but invisible
+                    opacity: 0, // Start invisible
+                    scale: 0.8
+                });
+
+                // Show title when approaching skills section
+                ScrollTrigger.create({
+                    trigger: '#skills',
+                    start: 'top 30%',
+                    end: () => `+=${Math.max(800, 1000)}`,
+                    onEnter: () => gsap.to(skillsTitle, { opacity: 1, duration: 0.5 }),
+                    onLeave: () => gsap.to(skillsTitle, { opacity: 0, duration: 0.3 }),
+                    onLeaveBack: () => gsap.to(skillsTitle, { opacity: 0, duration: 0.3 })
+                });
+
+                // Create scroll-triggered animation for the title
+                ScrollTrigger.create({
+                    trigger: '#skills',
+                    start: 'top 20%',
+                    end: () => `+=${Math.max(800, 1000)}`,
+                    scrub: 1.5, // Medium speed animation
+                    onUpdate: (self) => {
+                        const progress = self.progress;
+                        
+                        // Move title from right side to left edge
+                        const startX = window.innerWidth * 0.6; // Start on right side (visible)
+                        const leftEdgeX = -window.innerWidth * 0.2; // Left edge position
+                        
+                        let currentX;
+                        if (progress < 0.6) {
+                            // Move from right side to left edge (first 60% of animation)
+                            const moveProgress = progress / 0.6;
+                            currentX = startX + (leftEdgeX - startX) * moveProgress;
+                        } else {
+                            // Stay at left edge (last 40% of animation)
+                            currentX = leftEdgeX;
+                        }
+                        
+                        // Move title upward as user scrolls
+                        const startY = 0;
+                        const endY = -window.innerHeight * 0.1;
+                        const currentY = startY + (endY - startY) * progress;
+                        
+                        // Scale and opacity changes
+                        const scale = 0.8 + (0.4 * progress);
+                        
+                        // Fade in during movement
+                        let opacity;
+                        if (progress < 0.3) {
+                            // Fade in during first 30% of animation
+                            opacity = Math.min(1, (progress / 0.3) * 2);
+                        } else {
+                            // Stay fully visible for rest of animation
+                            opacity = 1;
+                        }
+                        
+                        gsap.set(skillsTitle, {
+                            x: currentX,
+                            y: currentY,
+                            scale: scale,
+                            opacity: opacity
+                        });
+                    }
+                });
             }
         }
 

@@ -256,28 +256,37 @@ section {
     position: sticky;
     top: 0;
     height: 100vh;
-    display: grid;
-    grid-template-rows: auto auto 1fr;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     perspective: 1200px;
-    perspective-origin: 50% 40%;
+    perspective-origin: 50% 60%;
     overflow: hidden;
 }
 .featured-pin > h2 { margin: 6vh 0 2vh; }
 
-/* Centered PROJECT title overlay for the featured carousel */
-.projects-title {
-    position: relative; /* placed in flow above the track */
-    margin: 6vh auto 2vh;
-    text-align: center;
+/* Animated PROJECTS title */
+.projects-title-animated {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-size: 4rem;
-    color: rgba(255,255,255,0.95);
+    font-weight: 700;
+    color: #ffffff;
     letter-spacing: 0.6em;
+    text-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+    background: linear-gradient(135deg, #60a5fa, #3b82f6, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 100;
     pointer-events: none;
-    z-index: 10;
     will-change: transform, opacity;
-    transform: translateX(0);
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
+
 
 .gallery-intro {
     text-align: center;
@@ -289,13 +298,14 @@ section {
 
 .gallery-track {
     position: relative;
-    height: 80vh;
+    height: 60vh;
     display: flex;
     align-items: center;
     gap: 6vw;
     transform-style: preserve-3d;
     will-change: transform;
     padding: 0 10vw;
+    margin-top: 20vh; /* Push cards down to create space above */
 }
 
 /* ensure track is wide enough when measured by JS */
@@ -438,10 +448,50 @@ footer {
 .skills-container {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 3rem;
     margin-top: 2rem;
+}
+
+/* Skill card wrapper with title */
+.skill-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Skill title above each card */
+.skill-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: center;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+}
+
+/* Animated SKILLS title */
+.skills-title-animated {
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.6em;
+    text-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+    background: linear-gradient(135deg, #60a5fa, #3b82f6, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 100;
+    pointer-events: none;
+    will-change: transform, opacity;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
 .fx-wrap {
