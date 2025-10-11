@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0c0c14">
     <title>Kartik Patgar | Web Developer</title>
 
     <!-- Google Fonts: Inter -->
@@ -13,13 +15,24 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer></script>
     <!-- Three.js Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+    <!-- GSAP Core & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <!-- Lenis (smooth scroll) -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js" defer></script>
+    <!-- Icons -->
+    <link rel="icon" href="https://fav.farm/⭐" />
+
     <!-- Main Script -->
     <script src="script.js" defer></script>
-    
 </head>
 <body>
+    
+
     <!-- Animated Galaxy Background -->
     <div id="galaxy-bg">
         <div id="stars1" class="stars"></div>
@@ -36,7 +49,10 @@
             <a href="#" class="logo">Kartik Patgar</a>
             <ul>
                 <li><a href="#about">About</a></li>
+                <li><a href="#resume">Resume</a></li>
                 <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#achievements">Achievements</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -50,6 +66,10 @@
         <section id="hero">
             <h1>Hi, I'm Kartik Patgar</h1>
             <p>Information Science Student & Web Developer</p>
+            <div class="cta-row">
+                <a class="button magnetic" href="./Kartik_Patgar_Resume.pdf" download>Download Resume</a>
+                <a class="button" href="#projects">View Projects</a>
+            </div>
         </section>
 
         <!-- About Section -->
@@ -61,41 +81,314 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2 class="stagger-reveal">Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item">HTML</div>
-                <div class="skill-item">CSS</div>
-                <div class="skill-item">JavaScript</div>
-                <div class="skill-item">React.js</div>
-                <div class="skill-item">Node.js</div>
-                <div class="skill-item">Express.js</div>
-                <div class="skill-item">MongoDB</div>
-                <div class="skill-item">Java</div>
-                <div class="skill-item">C</div>
-                <div class="skill-item">Git</div>
+        <!-- Resume Section -->
+        <section id="resume" class="panel">
+            <h2 class="stagger-reveal">Resume / CV</h2>
+            <p style="text-align:center; color:#cbd5e1; max-width:720px; margin:0 auto 1.5rem;">Download a PDF copy of my latest resume. If the link doesn't download, place your PDF as <code>Kartik_Patgar_Resume.pdf</code> in the project root or update the URL.</p>
+            <div style="display:flex; justify-content:center; gap:1rem;">
+                <a class="button magnetic" href="./Kartik_Patgar_Resume.pdf" download>Download PDF</a>
+                <a class="button" href="./Kartik_Patgar_Resume.pdf" target="_blank" rel="noopener">Open in New Tab</a>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects">
-            <h2 class="stagger-reveal">My Projects</h2>
+        <!-- Featured Work: Scroll-triggered horizontal carousel -->
+        <section id="projects" class="featured-work">
+            <div class="featured-pin">
+                <!-- Centered PROJECT title (animated via GSAP) -->
+                <h2 class="projects-title">PROJECT</h2>
+                <div class="gallery-track">
+                    <article class="project-card3d">
+                        <img class="thumb" src="https://placehold.co/1000x600/0b1220/93c5fd?text=Smart+Study+Planner" alt="Smart Study Planner thumbnail">
+                        <div class="content">
+                            <h3>Smart Study Planner</h3>
+                            <p>Plan sessions, track goals, and get reminders with analytics.</p>
+                            <div class="actions">
+                                <a class="button small" href="https://github.com/your-username/smart-study-planner" target="_blank" rel="noopener">GitHub</a>
+                                <a class="button small view-link" href="https://github.com/your-username/smart-study-planner" target="_blank" rel="noopener">View</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card3d">
+                        <img class="thumb" src="https://placehold.co/1000x600/0b1220/93c5fd?text=Responsive+Blog" alt="Responsive Personal Blog Website thumbnail">
+                        <div class="content">
+                            <h3>Responsive Personal Blog Website</h3>
+                            <p>Markdown content, SEO routes, dark mode, and tags.</p>
+                            <div class="actions">
+                                <a class="button small" href="https://github.com/your-username/personal-blog-responsive" target="_blank" rel="noopener">GitHub</a>
+                                <a class="button small view-link" href="https://github.com/your-username/personal-blog-responsive" target="_blank" rel="noopener">View</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card3d">
+                        <img class="thumb" src="https://placehold.co/1000x600/0b1220/93c5fd?text=E-Commerce+Showcase" alt="E-Commerce Product Showcase thumbnail">
+                        <div class="content">
+                            <h3>E-Commerce Product Showcase</h3>
+                            <p>Filterable product grid with quick views and animations.</p>
+                            <div class="actions">
+                                <a class="button small" href="https://github.com/your-username/ecommerce-product-showcase" target="_blank" rel="noopener">GitHub</a>
+                                <a class="button small view-link" href="https://github.com/your-username/ecommerce-product-showcase" target="_blank" rel="noopener">View</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card3d">
+                        <img class="thumb" src="https://placehold.co/1000x600/0b1220/93c5fd?text=Online+Quiz" alt="Online Quiz Application thumbnail">
+                        <div class="content">
+                            <h3>Online Quiz Application</h3>
+                            <p>Timed quizzes, categories, scoring, and history.</p>
+                            <div class="actions">
+                                <a class="button small" href="https://github.com/your-username/online-quiz-app" target="_blank" rel="noopener">GitHub</a>
+                                <a class="button small view-link" href="https://github.com/your-username/online-quiz-app" target="_blank" rel="noopener">View</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card3d">
+                        <img class="thumb" src="https://placehold.co/1000x600/0b1220/93c5fd?text=Weather+Dashboard" alt="Dynamic Weather Dashboard thumbnail">
+                        <div class="content">
+                            <h3>Dynamic Weather Dashboard</h3>
+                            <p>Real-time forecasts with search and clean visuals.</p>
+                            <div class="actions">
+                                <a class="button small" href="https://github.com/your-username/dynamic-weather-dashboard" target="_blank" rel="noopener">GitHub</a>
+                                <a class="button small view-link" href="https://github.com/your-username/dynamic-weather-dashboard" target="_blank" rel="noopener">View</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card3d">
+                        <img class="thumb" src="https://placehold.co/1000x600/0b1220/93c5fd?text=Task+Manager" alt="Task Manager with Progress Tracker thumbnail">
+                        <div class="content">
+                            <h3>Task Manager with Progress Tracker</h3>
+                            <p>Track tasks, statuses, and project progress bars.</p>
+                            <div class="actions">
+                                <a class="button small" href="https://github.com/your-username/task-manager-progress" target="_blank" rel="noopener">GitHub</a>
+                                <a class="button small view-link" href="https://github.com/your-username/task-manager-progress" target="_blank" rel="noopener">View</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card3d">
+                        <img class="thumb" src="https://placehold.co/1000x600/0b1220/93c5fd?text=Recipe+Finder" alt="Interactive Recipe Finder thumbnail">
+                        <div class="content">
+                            <h3>Interactive Recipe Finder</h3>
+                            <p>Search by ingredients and dietary preferences.</p>
+                            <div class="actions">
+                                <a class="button small" href="https://github.com/your-username/interactive-recipe-finder" target="_blank" rel="noopener">GitHub</a>
+                                <a class="button small view-link" href="https://github.com/your-username/interactive-recipe-finder" target="_blank" rel="noopener">View</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card3d">
+                        <img class="thumb" src="https://placehold.co/1000x600/0b1220/93c5fd?text=Travel+Explorer" alt="Travel Explorer Website thumbnail">
+                        <div class="content">
+                            <h3>Travel Explorer Website</h3>
+                            <p>Itinerary planner with destination highlights.</p>
+                            <div class="actions">
+                                <a class="button small" href="https://github.com/your-username/travel-explorer" target="_blank" rel="noopener">GitHub</a>
+                                <a class="button small view-link" href="https://github.com/your-username/travel-explorer" target="_blank" rel="noopener">View</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="project-card3d">
+                        <img class="thumb" src="https://placehold.co/1000x600/0b1220/93c5fd?text=Movie+Reviews" alt="Movie Review & Rating Platform thumbnail">
+                        <div class="content">
+                            <h3>Movie Review & Rating Platform</h3>
+                            <p>Browse, review, and rate movies with profiles.</p>
+                            <div class="actions">
+                                <a class="button small" href="https://github.com/your-username/movie-review-rating" target="_blank" rel="noopener">GitHub</a>
+                                <a class="button small view-link" href="https://github.com/your-username/movie-review-rating" target="_blank" rel="noopener">View</a>
+                            </div>
+                        </div>
+                    </article>
+                </div> <!-- .gallery-track -->
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="panel">
+            <h2 class="stagger-reveal">Experience</h2>
+            <div class="project-grid">
+                <div class="project-card" aria-label="Experience: Frontend Intern">
+                    <h3>Frontend Developer Intern</h3>
+                    <p style="margin-bottom:0.5rem;">Company Name · Jun 2024 – Aug 2024</p>
+                    <ul style="color:#cbd5e1; padding-left:1.25rem;">
+                        <li>Built responsive UI components in React improving page performance by 20%.</li>
+                        <li>Collaborated with designers to implement pixel-perfect layouts and accessibility.</li>
+                        <li>Wrote reusable hooks and utilities reducing code duplication.</li>
+                    </ul>
+                </div>
+                <div class="project-card" aria-label="Experience: Part-time Developer">
+                    <h3>Part-time Web Developer</h3>
+                    <p style="margin-bottom:0.5rem;">Freelance · 2023 – Present</p>
+                    <ul style="color:#cbd5e1; padding-left:1.25rem;">
+                        <li>Delivered small business sites with SEO best practices and analytics.</li>
+                        <li>Integrated contact forms with validation and spam protection.</li>
+                        <li>Automated deployments using GitHub Pages / Netlify.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="panel">
+            <h2 class="stagger-reveal">Achievements</h2>
             <div class="project-grid">
                 <div class="project-card">
-                    <h3>Task Manager</h3>
-                    <p>A MERN stack project for creating, updating, deleting, and categorizing tasks.</p>
-                    <a href="https://github.com/KartikPatgar15" target="_blank">View Code</a>
+                    <h3>Certifications</h3>
+                    <ul style="color:#cbd5e1; padding-left:1.25rem;">
+                        <li>Oracle Java Foundations Certified Junior Associate</li>
+                        <li>MongoDB University: M001 – MongoDB Basics</li>
+                        <li>freeCodeCamp: Responsive Web Design</li>
+                    </ul>
                 </div>
                 <div class="project-card">
-                    <h3>Weather Web App</h3>
-                    <p>Responsive application that displays real-time weather data using external APIs.</p>
-                    <a href="https://github.com/KartikPatgar15" target="_blank">View Code</a>
+                    <h3>Awards & Hackathons</h3>
+                    <ul style="color:#cbd5e1; padding-left:1.25rem;">
+                        <li>Winner – Campus Hackathon (2024): Built a task management app.</li>
+                        <li>Top 5 – Web Dev Sprint (2023): Real-time weather dashboard.</li>
+                    </ul>
                 </div>
-                 <div class="project-card">
-                    <h3>E-Commerce Website</h3>
-                    <p>Full-stack platform with product listings, a shopping cart, and secure checkout (Ongoing).</p>
-                    <a href="https://github.com/KartikPatgar15" target="_blank">View Code</a>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="panel">
+            <h2 class="stagger-reveal">Skills</h2>
+            <div class="skills-container">
+                <div class="card" data-href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZIbTuWRSqUVqo_Qdo4O9PKBwhRuwHBcmDdJlDez5oSwdXel-7pw">
+                    <div class="front">
+                        <div class="image">
+                            <p class="heading">Languages</p>
+                        </div>
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="flip">
+                                    <span class="zmdi zmdi-replay"></span>
+                                </button>
+                            </header>
+                            <p>Programming Languages</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="flip">
+                                    <span class="zmdi zmdi-replay"></span>
+                                </button>
+                            </header>
+                            <b>Languages I work with:</b>
+                            <p>HTML, CSS, JavaScript, Java, C, Python</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-href="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQJW58uxpzvVMvRwWjeU840KqAKGhLNyMT0F5Qh4cgD9rUCihYh">
+                    <div class="front">
+                        <div class="image">
+                            <p class="heading">Frameworks</p>
+                        </div>
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="flip">
+                                    <span class="zmdi zmdi-replay"></span>
+                                </button>
+                            </header>
+                            <p>Modern Frameworks</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="flip">
+                                    <span class="zmdi zmdi-replay"></span>
+                                </button>
+                            </header>
+                            <b>Frameworks I use:</b>
+                            <p>React, Node.js, Express, GSAP</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZIbTuWRSqUVqo_Qdo4O9PKBwhRuwHBcmDdJlDez5oSwdXel-7pw">
+                    <div class="front">
+                        <div class="image">
+                            <p class="heading">Tools</p>
+                        </div>
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="flip">
+                                    <span class="zmdi zmdi-replay"></span>
+                                </button>
+                            </header>
+                            <p>Development Tools</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="flip">
+                                    <span class="zmdi zmdi-replay"></span>
+                                </button>
+                            </header>
+                            <b>Tools I work with:</b>
+                            <p>Git, GitHub, VS Code, Figma</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-href="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQJW58uxpzvVMvRwWjeU840KqAKGhLNyMT0F5Qh4cgD9rUCihYh">
+                    <div class="front">
+                        <div class="image">
+                            <p class="heading">Databases</p>
+                        </div>
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="flip">
+                                    <span class="zmdi zmdi-replay"></span>
+                                </button>
+                            </header>
+                            <p>Database Technologies</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="flip">
+                                    <span class="zmdi zmdi-replay"></span>
+                                </button>
+                            </header>
+                            <b>Databases I know:</b>
+                            <p>MongoDB, SQL Basics</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" data-href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZIbTuWRSqUVqo_Qdo4O9PKBwhRuwHBcmDdJlDez5oSwdXel-7pw">
+                    <div class="front">
+                        <div class="image">
+                            <p class="heading">Other</p>
+                        </div>
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="flip">
+                                    <span class="zmdi zmdi-replay"></span>
+                                </button>
+                            </header>
+                            <p>Additional Skills</p>
+                            <a href="#">View Details</a>
+                        </div>
+                    </div>
+                    <div class="back">
+                        <div class="text">
+                            <header class="clearfix">
+                                <button class="flip">
+                                    <span class="zmdi zmdi-replay"></span>
+                                </button>
+                            </header>
+                            <b>Other skills:</b>
+                            <p>Responsive Design, Accessibility, REST APIs</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -104,11 +397,23 @@
         <section id="contact">
             <h2 class="stagger-reveal">Get In Touch</h2>
             <p>I'm always open to discussing new projects or opportunities. Feel free to reach out!</p>
-            <div class="contact-links">
-                <a href="mailto:kartikpatgarbada@gmail.com" class="button">Email Me</a>
-                <a href="https://linkedin.com/in/kartik-patgar-05b131276" target="_blank" class="button">LinkedIn</a>
-                <a href="https://github.com/KartikPatgar15" target="_blank" class="button">GitHub</a>
-            </div>
+            <form id="contact-form" novalidate class="contact-form">
+                <div class="form-row">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                    <span class="error" id="name-error" aria-live="polite"></span>
+                </div>
+                <div class="form-row">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    <span class="error" id="email-error" aria-live="polite"></span>
+                </div>
+                <div class="form-row">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell me about your project..."></textarea>
+                </div>
+                <button type="submit" class="button">Send</button>
+            </form>
         </section>
 
     </main>
@@ -117,5 +422,7 @@
     <footer>
         <p>&copy; 2025 Kartik Patgar. All rights reserved.</p>
     </footer>
+
+    
 </body>
 </html>
